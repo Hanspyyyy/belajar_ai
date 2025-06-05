@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ai hakiman masih belajar</title>
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #1e1e1e;
+      --input: #2c2c2c;
+      --text: #ffffff;
+      --accent: #00d991;
+      --bubble-user: #3a3a3a;
+      --bubble-bot: #2c3e50;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin: 20px ;
+      font-size: 1.5em;
+      color: var(--accent);
+    }
+
+    #chatbox {
+      width: 100%;
+      max-width: 600px;
+      height: 65vh;
+      background-color: var(--card);
+      border-radius: 12px;
+      padding: 15px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 14px;
+      margin: 10px 0;
+      line-height: 1.4;
+    }
+
+    .user {
+      background-color: var(--bubble-user);
+      align-self: flex-end;
+      margin-left: auto;
+      color: #ffffff;
+    }
+
+    .bot {
+      background-color: var(--bubble-bot);
+      align-self: flex-start;
+      margin-right: auto;
+      color: #ffffff;
+    }
+
+    .input-wrapper {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      align-items: center;
+      margin: 15px 0;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 14px;
+      font-size: 1em;
+      background-color: var(--input);
+      color: var(--text);
+      border: none;
+      border-radius: 10px 0 0 10px;
+      box-sizing: border-box;
+    }
+
+    #userInput:focus {
+      outline: none;
+    }
+
+    #sendBtn {
+      background-color: var(--accent);
+      color: var(--bg);
+      border: none;
+      padding: 11px 20px;
+      cursor: pointer;
+      font-size: 1.2em;
+      border-radius: 0 10px 10px 0;
+      transition: background-color 0.2s;
+    }
+
+    #sendBtn:hover {
+      background-color: #00b87c;
+    }
+
+    #menuBtn {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: var(--accent);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="menuBtn">☰</button>
+  <h1>>_ hans_.py</h1>
+  <div id="chatbox"></div>
+  <div class="input-wrapper">
+    <input type="text" id="userInput" placeholder="mau nanya ape lu gua lagi males" autocomplete="off" />
+    <button id="sendBtn">↑</button>
+  </div>
+
+  <script>
+    const chatbox = document.getElementById("chatbox");
+    const input = document.getElementById("userInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    const jokes = [
+      "Gue bukan AI, ya kocak pembuat gua gabut katanya felinglonly,makanya gua di bikin.","bodo amat",
+      "Nanya mulu, kayak pacar yang posesif.",
+      "Aku nggak tahu jawabannya...aku di program blom,coba kasih tau ke si kimong kalo ada yang kurang gitu ini ish kocal dia mah buat di tinggalin aja",
+      "Hmm... itu pertanyaan berat, berat kaya hidup kamu.",
+      "Maaf, sinyal otak gue gangguan... kayak WiFi tetangga.",
+      "Wah itu ribet... nanya mamak lu aja.",
+      "Kalo gue tahu, gue udah jadi motivator di YouTube.",
+      "Bentar... gue loading pake koneksi BTS.",
+      "Yah... gue ngantuk, bisa ulang pertanyaannya?",
+      "Jawaban gue? Sama kayak mantan... gak bisa dipercaya."
+    ];
+
+    function botReply(userMsg) {
+      const msg = userMsg.toLowerCase();
+
+      if (msg.includes("halo") || msg.includes("hai")) {
+        return "di bilang gua lagi males masih aja, mau nanya ape lu";
+      }
+
+      if (msg.includes("siapa kamu")) {
+        return "lu nanya?. Kepo bangt dah jadi orang.";
+      }
+
+      if (msg.includes("ngapain") || msg.includes("lagi apa")) {
+        return "Lagi scroll TikTok sambil pura-pura mikir.";
+      }
+
+      if (msg.includes("kenapa aku") || msg.includes("salahku apa")) {
+        return "Kadang hidup gitu, yang baik ditinggal, yang ngeselin dilamar 😔";
+      }
+
+      if (msg.includes("duit") || msg.includes("uang")) {
+        return "Duit bukan segalanya... tapi segalanya butuh duit,bener ga?";
+      }
+
+      if (msg.includes("cinta") || msg.includes("gebetan") || msg.includes("pacar")) {
+        return "Cinta itu kayak sinyal, kadang kuat kadang lost,kaya tai";
+      }
+
+      if (msg.includes("sekolah") || msg.includes("tugas") || msg.includes("ujian")) {
+        return "Tenang, nilai bukan segalanya. Tapi kalo gak lulus ya nangis juga.";
+      }
+
+      if (msg.includes("stress") || msg.includes("capek") || msg.includes("pusing")) {
+        return "Tarik napas... ga usah di keluarin..";
+      }
+
+      if (msg.includes("anjing") || msg.includes("babi") || msg.includes("tai")) {
+        return "yeh kocak lu tuh beruk";
+     }
+
+      if (msg.includes("judes") || msg.includes("galak") || msg.includes("dih")) {
+        return "suka suka gua lah ";
+      }
+
+      if (msg.includes("kocak") || msg.includes("yaila") || msg.includes("bot bot")) {
+        return "kalo lu mau ribut jangan di sini locak,baku hantam kita di lapangan"; 
+      }
+
+      if (msg.includes("cuek amat") || msg.includes("cuek") || msg.includes("cuek")) {
+        return "iya kaya usam cuek yang di dapur lo";
+      }
+
+      if (msg.includes("program") || msg.includes("cara buat lu") || msg.includes("iii")) {
+        return "iya kasih tau ke si kimong kalo programnya aja yang ga bener ini";
+      }
+
+      if (msg.includes("bantu") || msg.includes("tolong") || msg.includes("ayolah")) {
+        return "enggak gua lagi males kontol";
+      }
+
+      // fallback joke
+      return jokes[Math.floor(Math.random() * jokes.length)];
+    }
+
+    function showMessage(sender, text) {
+      const msg = document.createElement("div");
+      msg.className = "message " + sender;
+      msg.textContent = text;
+      chatbox.appendChild(msg);
+      chatbox.scrollTop = chatbox.scrollHeight;
+    }
+
+    sendBtn.addEventListener("click", () => {
+      const userText = input.value.trim();
+      if (userText !== "") {
+        showMessage("user", userText);
+        const botText = botReply(userText);
+        setTimeout(() => showMessage("bot", botText), 500);
+        input.value = "";
+      }
+    });
+
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault(); // blok Enter
+      }
+    });
+
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      showMessage("bot", "Kepo amat bang sampe pencet ☰ segala 👀");
+    });
+  </script>
+</body>
+  </html>
