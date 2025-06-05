@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediksi Sederhana</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    <h1>Prediksi Emosi</h1>
+    <form method="POST" action="/predict">
+        <input type="text" name="user_input" placeholder="Tulis kalimat di sini...">
+        <button type="submit">Prediksi</button>
+    </form>
+
+    {% if prediction %}
+        <p>Input: {{ user_input }}</p>
+        <p>Prediksi: <strong>{{ prediction }}</strong></p>
+    {% endif %}
+</body>
+</html>
